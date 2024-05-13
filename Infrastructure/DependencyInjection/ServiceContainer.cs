@@ -1,5 +1,7 @@
 ﻿using Application.Extension.Identity;
+using Application.Interface.Idenity;
 using Infrastructure.DataAccess;
+using Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,8 @@ namespace Infrastructure.DependencyInjection
                     adp.RequireAuthenticatedUser();
                     adp.RequireRole("User");
                 });
+
+            services.AddScoped<IAccount, Account>();
 
             return services;
         }
